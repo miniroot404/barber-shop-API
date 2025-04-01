@@ -1,6 +1,10 @@
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
+
 plugins {
 	java
-	id("org.springframework.boot") version "3.4.4"
+	id("org.springframework.boot") version "3.4.2"
 	id("io.spring.dependency-management") version "1.1.7"
 }
 
@@ -31,7 +35,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.flywaydb:flyway-core")
 	implementation("org.flywaydb:flyway-database-postgresql")
-	implementation("org.mapsstruct:mapsstruct:$mapStructVersion")
+	implementation("org.mapstruct:mapstruct:$mapStructVersion")
 
 	compileOnly("org.projectlombok:lombok")
 
@@ -39,7 +43,7 @@ dependencies {
 
 	runtimeOnly("org.postgresql:postgresql")
 
-	annotationProcessor("org.mapsstruct:mapsstruct-processor:$mapStructVersion")
+	annotationProcessor("org.mapstruct:mapstruct-processor:$mapStructVersion")
 	annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
 	annotationProcessor("org.projectlombok:lombok")
 
@@ -85,3 +89,4 @@ tasks.register("generateFlywayMigrationFile"){
 		logger.lifecycle("Migration file created: ${migrationFile.path}")
 
 	}
+}
